@@ -1,0 +1,24 @@
+import cors from 'cors';
+import express, { Request, Response } from 'express';
+import router from './app/allRoutes';
+import { globalErrorHandler } from './app/middleware/globalErrorHandlers';
+import { notFountRoute } from './app/middleware/notFoundRout';
+const app = express();
+
+app.use(express.json());
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+
+// route call by (allRoutes--> index.ts)
+app.use('/api/v1', router);
+
+app.get('/', (req: Request, res: Response) => {
+    res.send('Fitness Equipment');
+});
+
+// global error handler from middlewares
+app.use(globalErrorHandler);
+
+// rout not found from middlewares
+app.use(notFountRoute);
+
+export default app;
