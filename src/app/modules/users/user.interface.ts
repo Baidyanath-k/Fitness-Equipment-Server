@@ -3,7 +3,6 @@ export interface TUser {
     password: string;
     needsPasswordChange: boolean;
     passwordChangeAt?: Date;
-    role: 'admin' | 'user';
-    status: 'inprogress' | 'blocked';
+    role: 'admin' | 'customer';
     isDeleted: false;
 };
