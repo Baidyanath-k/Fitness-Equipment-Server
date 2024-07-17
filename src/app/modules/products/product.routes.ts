@@ -12,5 +12,26 @@ router.post(
     ProductController.createProductCont
 );
 
+router.get(
+    '/get-products',
+    ProductController.findAllProductsCont
+);
+
+router.get(
+    '/single-product/:id',
+    ProductController.findSingleProductCont
+);
+
+router.patch(
+    '/update-product/:id',
+    requestValidate(productValidation.updateProductValidationSchema),
+    ProductController.updateProductCont
+);
+
+router.delete(
+    '/delete-product/:id',
+    ProductController.deleteProductCont
+)
+
 
 export const productRoutes = router;
